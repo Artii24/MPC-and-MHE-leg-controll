@@ -22,7 +22,7 @@ grid on
 % CasADi v3.4.5
 % addpath('C:\Users\mehre\OneDrive\Desktop\CasADi\casadi-windows-matlabR2016a-v3.4.5')
 % CasADi v3.5.5
-addpath('C:\Users\mehre\OneDrive\Desktop\CasADi\casadi-windows-matlabR2016a-v3.5.5')
+addpath('D:\Work\Sber\Casadi_ex\casadi-windows-matlabR2016a-v3.5.5')
 import casadi.*
  
 m = SX.sym('m'); % Decision variable (slope)

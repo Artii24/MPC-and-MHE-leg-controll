@@ -1,4 +1,4 @@
-% first casadi test for mpc fpr mobile robots
+% first casadi test for mpc for 2R manipulator
 clear all
 close all
 clc
@@ -12,16 +12,20 @@ import casadi.*
 
 T = 0.2; %[s]
 N = 100; % prediction horizon
-rob_diam = 0.3;
+r1 = 0.5;
+r2 = 0.3;
+r1c = 0.25;
+r2c = 0.1;
+
 
 v_max = 0.6; v_min = -v_max;
 omega_max = pi/4; omega_min = -omega_max;
 
-x = SX.sym('x'); y = SX.sym('y'); theta = SX.sym('theta');
-states = [x;y;theta]; n_states = length(states);
+q1 = SX.sym('q1'); q2 = SX.sym('q2'); x = SX.sym('x'); y = SX.sym('y');
+states = [q1, q2]; n_states = length(states);
 
-v = SX.sym('v'); omega = SX.sym('omega');
-controls = [v;omega]; n_controls = length(controls);
+tau1 = SX.sym('tau1'); tau2 = SX.sym('tau2');
+controls = [tau1;tau2]; n_controls = length(controls);
 rhs = [v*cos(theta);v*sin(theta);omega] + [(rand(2,1)-0.5)./40;0]; % system r.h.s
 
 f = Function('f',{states,controls},{rhs}); % nonlinear mapping function f(x,u)
