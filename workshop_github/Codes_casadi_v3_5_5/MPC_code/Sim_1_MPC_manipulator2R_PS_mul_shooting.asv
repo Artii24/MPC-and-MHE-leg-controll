@@ -3,10 +3,8 @@ clear all
 close all
 clc
 
-% CasADi v3.4.5
-% addpath('C:\Users\mehre\OneDrive\Desktop\CasADi\casadi-windows-matlabR2016a-v3.4.5')
-% CasADi v3.5.5
-addpath('D:\Work\Sber\Casadi_ex\casadi-windows-matlabR2016a-v3.5.5')
+% addpath('D:\Work\Sber\Casadi_ex\casadi-windows-matlabR2016a-v3.5.5')
+addpath('C:\Users\Arti_Eg\Documents\work\Sber\casadi-windows-matlabR2016a-v3.5.5')
 
 import casadi.*
 
@@ -21,10 +19,10 @@ r2c = 0.1;
 v_max = 0.6; v_min = -v_max;
 omega_max = pi/4; omega_min = -omega_max;
 
-q1 = SX.sym('q1'); q2 = SX.sym('q2'); x = SX.sym('x'); y = SX.sym('y');
-states = [q1, q2]; n_states = length(states);
+q = SX.sym('q',2); x = SX.sym('x'); y = SX.sym('y');
+states = q; n_states = length(states);
 
-tau1 = SX.sym('tau1'); tau2 = SX.sym('tau2');
+tau = SX.sym('tau1'); tau2 = SX.sym('tau2');
 controls = [tau1;tau2]; n_controls = length(controls);
 rhs = [v*cos(theta);v*sin(theta);omega] + [(rand(2,1)-0.5)./40;0]; % system r.h.s
 
